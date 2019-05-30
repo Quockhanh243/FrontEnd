@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {StudentService} from '../student.service';
 import {Student} from '../student';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-student',
@@ -10,23 +11,25 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 })
 export class StudentComponent implements OnInit {
 
-  constructor(private studentService: StudentService, private fb: FormBuilder) { }
+  constructor(private studentService: StudentService, private fb: FormBuilder, private router: Router) { }
   students: Student[];
   student: Student;
   dtOptions: DataTables.Settings = {};
-  addStudentForm: FormGroup;
+  editStudentForm: FormGroup;
   ngOnInit() {
     this.reloadData();
     this.dtOptions = {
       pagingType: 'full_numbers',
       processing: true
     };
-    this.addStudentForm = this.fb.group({
-      new_name: [''],
-      new_birth: ['']
+    this.editStudentForm = this.fb.group({
+      name: [''],
+      birth: ['']
     });
   }
-
+  addStudent(){
+    this.router.navigate(['addStudent']);
+  }
   getStudentById(id: number) {
     return this.studentService.getStudentById(id).subscribe(data => this.student = data);
   }
@@ -35,9 +38,15 @@ export class StudentComponent implements OnInit {
     this.studentService.getStudent().subscribe(data => this.students = data);
   }
 
-  onSubmit() {
-    console.log(this.addStudentForm.value);
-    this.studentService.addStudent(this.addStudentForm.value).subscribe(response => console.log('Success', response),
-        error => console.log('Error', error));
+  onDelete(id: number){
+      this.studentService.delete(id).subscribe(data => {
+        console.log(data);
+        this.reloadData();
+      },
+        error => console.log(error));
+    location.reload();
+  }
+  onSubmitEdit(){
+    console.log(this.editStudentForm.value);
   }
 }

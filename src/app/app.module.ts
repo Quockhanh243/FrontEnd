@@ -12,13 +12,17 @@ import { HeaderComponent } from './header/header.component';
 import {routingComponent} from './app-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AddStudentComponent } from './add-student/add-student.component';
+import { AddCourseComponent } from './add-course/add-course.component';
+import { AddRegistrationComponent } from './add-registration/add-registration.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponent,
     HeaderComponent,
-    AddStudentComponent
+    AddStudentComponent,
+    AddCourseComponent,
+    AddRegistrationComponent
   ],
   imports: [
     BrowserModule,
