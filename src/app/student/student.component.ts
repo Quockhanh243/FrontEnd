@@ -15,17 +15,12 @@ export class StudentComponent implements OnInit {
   students: Student[];
   student: Student;
   dtOptions: DataTables.Settings = {};
-  editStudentForm: FormGroup;
   ngOnInit() {
     this.reloadData();
     this.dtOptions = {
       pagingType: 'full_numbers',
       processing: true
     };
-    this.editStudentForm = this.fb.group({
-      name: [''],
-      birth: ['']
-    });
   }
   addStudent(){
     this.router.navigate(['addStudent']);
@@ -46,7 +41,7 @@ export class StudentComponent implements OnInit {
         error => console.log(error));
     location.reload();
   }
-  onSubmitEdit(){
-    console.log(this.editStudentForm.value);
+  onUpdate(id: number) {
+    this.router.navigate(['update', id]);
   }
 }

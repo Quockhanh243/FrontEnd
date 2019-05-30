@@ -1,24 +1,24 @@
 <div class="container">
   <h2>Add Employee Form</h2>
-  <form action="" method="POST">
+  <form action="" method="POST" [formGroup]="registrationForm"  (ngSubmit)=onSubmit()>
     <div class="form-group">
       <label>Student: </label>
-      <select>
-        <option *ngFor="let student of students, index as i" value="{{student}}">{{student.name}}</option>
+      <select formControlName="student" name="student">
+        <option *ngFor="let stu of students, index as i" [ngValue]=stu>{{stu.name}}</option>
       </select>
     </div>
     <div class="form-group">
       <label>Course: </label>
-      <select>
-        <option *ngFor="let course of courses">{{course.name}}: {{course.fee}}</option>
+      <select formControlName="course" name="course">
+        <option *ngFor="let course of courses" [ngValue]=course >{{course.name}}: {{course.fee}}</option>
       </select>
     </div>
-    <div class="form-group">
+    <div class="form-group" style="width: 250px">
       <label>Start Date: </label>
-      <input type="date" class="form-control">
+      <input type="date" class="form-control" formControlName="startDate">
     </div><div class="form-group">
       <label>End Date: </label>
-      <input type="date" class="form-control">
+      <input type="date" class="form-control" formControlName="endDate">
     </div>
     <button class="btn btn-success" type="submit" id="submit">Add</button>
     <button class="btn btn-danger" type="reset" >Re-Type</button>
