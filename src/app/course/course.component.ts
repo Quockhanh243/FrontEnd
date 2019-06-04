@@ -43,8 +43,8 @@ export class CourseComponent implements OnInit {
   addCourse(){
     this.router.navigate(['addCourse']);
   }
-  onSubmitEdit(){
-
+  onUpdate(id: number) {
+    this.router.navigate(['updateCourse', id]);
   }
   reloadData(){
     this.courseService.getCourse().subscribe(data => this.courses = data);

@@ -39,8 +39,8 @@
           <input type="text" class="form-control"  id="name" value="{{course.name}}" disabled formControlName="name">
         </div>
         <div class="form-group">
-          <label>Birth: </label>
-          <input type="text" class="form-control" id="birth" value="{{course.fee}}" disabled formControlName="fee">
+          <label>Fee: </label>
+          <input type="text" class="form-control" id="fee" value="{{course.fee}}" disabled formControlName="fee">
         </div>
       </div>
 
@@ -48,7 +48,7 @@
       <!-- Modal footer -->
       <div class="modal-footer">
         <button class="btn btn-primary" (click)="onDelete(course.id)">Delete</button>
-        <button class="btn btn-success">Update</button>
+        <button class="btn btn-success" type="button" data-dismiss="modal" (click)="onUpdate(course.id)">Update</button>
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
       </div>
     </div>

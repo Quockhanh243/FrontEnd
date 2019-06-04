@@ -15,6 +15,7 @@ import { AddStudentComponent } from './add-student/add-student.component';
 import { AddCourseComponent } from './add-course/add-course.component';
 import { AddRegistrationComponent } from './add-registration/add-registration.component';
 import { UpdateStudentComponent } from './update-student/update-student.component';
+import { UpdateCourseComponent } from './update-course/update-course.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { UpdateStudentComponent } from './update-student/update-student.componen
     AddStudentComponent,
     AddCourseComponent,
     AddRegistrationComponent,
-    UpdateStudentComponent
+    UpdateStudentComponent,
+    UpdateCourseComponent
   ],
   imports: [
     BrowserModule,
