@@ -3,6 +3,7 @@ import {StudentService} from '../student.service';
 import {Student} from '../student';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Router} from "@angular/router";
+import {Subject} from "rxjs";
 
 @Component({
   selector: 'app-student',
@@ -15,6 +16,7 @@ export class StudentComponent implements OnInit {
   students: Student[];
   student: Student;
   dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject();
   ngOnInit() {
     this.reloadData();
     this.dtOptions = {
@@ -30,7 +32,10 @@ export class StudentComponent implements OnInit {
   }
 
   reloadData() {
-    this.studentService.getStudent().subscribe(data => this.students = data);
+    this.studentService.getStudent().subscribe(data => {
+      this.students = data,
+        this.dtTrigger.next();
+    });
   }
 
   onDelete(id: number){

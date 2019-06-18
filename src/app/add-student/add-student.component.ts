@@ -23,8 +23,7 @@ export class AddStudentComponent implements OnInit {
     console.log(this.addStudentForm.value);
     this.studentService.addStudent(this.addStudentForm.value).subscribe(
       response => {
-        console.log('Success', response),
-        location.reload();
+        console.log('Success', response)
       },
       error => console.log('Error', error));
     this.router.navigate([
